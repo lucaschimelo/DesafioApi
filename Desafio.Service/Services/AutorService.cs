@@ -32,11 +32,11 @@ namespace Desafio.Service.Services
             html += "<div style=\"font-family: Arial, sans-serif;margin: 0;padding: 0;\">";
             html += "<h2 style=\"font-weight: bold;text-align: center;margin-top: 20px;\">Relatório Autor x Livro</h2>";
             html += "<br />";
-            html += "<table style=\"border-collapse: collapse;margin: 20px auto;\">";
+            html += "<table border='1' style=\"border-collapse: collapse;margin: 20px auto;\">";
             html += "<tr>";
-            html += "<td style=\"border: 1px solid black;\">Código</td>";
-            html += "<td style=\"border: 1px solid black;\">Autor</td>";
-            html += "<td style=\"border: 1px solid black;\">Livros</td>";
+            html += "<td style=\"border: 1px solid black;\"><b>Código</b></td>";
+            html += "<td style=\"border: 1px solid black;\"><b>Autor</b></td>";
+            html += "<td style=\"border: 1px solid black;\"><b>Livros</b></td>";
             html += "</tr>";
 
             IEnumerable<AutorLivroDTO> list = await _autorRepository.GetLivroAutorAsync();
@@ -63,11 +63,11 @@ namespace Desafio.Service.Services
                 lstautorLivro.ForEach(x =>
                 {
                     html += "<tr>";
-                    html += $"<td style=\"border: 1px solid black;\">Título : {x.Livro}</td>";
+                    html += $"<td style=\"border: 1px solid black;\"><b>Título :</b> {x.Livro}</td>";
                     html += "</tr>";
 
                     html += "<tr>";
-                    html += $"<td style=\"border: 1px solid black;\">Assuntos : {x.Assuntos}</td>";
+                    html += $"<td style=\"border: 1px solid black;\"><b>Assuntos :</b> {x.Assuntos}</td>";
                     html += "</tr>";
                 });
 
