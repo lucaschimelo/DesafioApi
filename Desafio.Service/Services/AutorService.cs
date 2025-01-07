@@ -29,13 +29,14 @@ namespace Desafio.Service.Services
 
             string html = string.Empty;
 
-            html += "<div>";
-            html += "<h2>Relatório Autor x Livro</h2>";
-            html += "<table>";
+            html += "<div style=\"font-family: Arial, sans-serif;margin: 0;padding: 0;\">";
+            html += "<h2 style=\"font-weight: bold;text-align: center;margin-top: 20px;\">Relatório Autor x Livro</h2>";
+            html += "<br />";
+            html += "<table style=\"border-collapse: collapse;margin: 20px auto;\">";
             html += "<tr>";
-            html += "<td>Autor</td>";
-            html += "<td>Código</td>";
-            html += "<td>Livros</td>";
+            html += "<td style=\"border: 1px solid black;\">Código</td>";
+            html += "<td style=\"border: 1px solid black;\">Autor</td>";
+            html += "<td style=\"border: 1px solid black;\">Livros</td>";
             html += "</tr>";
 
             IEnumerable<AutorLivroDTO> list = await _autorRepository.GetLivroAutorAsync();
@@ -53,20 +54,20 @@ namespace Desafio.Service.Services
 
                 html += "<tr>";
 
-                html += $"<td>{codigo}</td>";
-                html += $"<td>{autor}</td>";
+                html += $"<td style=\"border: 1px solid black;\">{codigo}</td>";
+                html += $"<td style=\"border: 1px solid black;\">{autor}</td>";
 
-                html += "<td>";
-                html += "<table>";
+                html += "<td style=\"border: 1px solid black;\">";
+                html += "<table style=\"border-collapse: collapse;margin: 20px auto;\">";
 
                 lstautorLivro.ForEach(x =>
                 {
                     html += "<tr>";
-                    html += $"<td>Título : {x.Livro}</td>";
+                    html += $"<td style=\"border: 1px solid black;\">Título : {x.Livro}</td>";
                     html += "</tr>";
 
                     html += "<tr>";
-                    html += $"<td>Assuntos : {x.Assuntos}</td>";
+                    html += $"<td style=\"border: 1px solid black;\">Assuntos : {x.Assuntos}</td>";
                     html += "</tr>";
                 });
 
@@ -79,8 +80,9 @@ namespace Desafio.Service.Services
             html += "</table>";
             html += "</div>";
 
+
             StringReader sr = new StringReader(html);
-            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            Document pdfDoc = new Document(PageSize.A4, 30, 30, 30, 30);
             HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
             MemoryStream memoryStream = new MemoryStream();
 
